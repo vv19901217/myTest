@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <cn.com.sinosoft.customviewtest.MyViewGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="皮卡丘"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="皮卡丘"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="杰尼龟"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="喷火龙"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="传说中的神奇宝贝"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="超级无敌小火龙"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="小火龙"
+            android:textColor="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_shape"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="妙蛙种子"
+            android:textColor="#000" />
+
+        <cn.com.sinosoft.customviewtest.MyViewGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="很长很长一段废话"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="很长很长一段废话"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="很长很长一段废话"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="很长很长一段废话"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="很长很长一段废话"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="很长很长一段废话"
+                android:textColor="#000" />
+        </cn.com.sinosoft.customviewtest.MyViewGroup>
+    </cn.com.sinosoft.customviewtest.MyViewGroup>
+
+</LinearLayout>
