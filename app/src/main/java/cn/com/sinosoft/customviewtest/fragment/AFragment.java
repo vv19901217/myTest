@@ -12,6 +12,7 @@ import cn.com.sinosoft.customviewtest.R;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
  */
 public class AFragment extends Fragment {
 
