@@ -27,7 +27,8 @@ import cn.com.sinosoft.customviewtest.lazy.bean.TabEntity;
  * 本身这种机制，如果处理不好，就会造成网路资源滥用和界面的过度绘制
  * 微信主界面就是懒加载
  * 关于vp.setOffscreenPageLimit(0)没用，是因为传入的值小于1都会默认为1
- * viewpager源码中的方法，populate(int newCurrentItem)
+ * viewpager源码中的方法，populate(int newCurrentItem) 很重要，通过这个方法和
+ * 设置的setOffscreenPageLimit来计算出需要缓存的页面和需要销毁的页面
  *
  */
 public class Main2Activity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
