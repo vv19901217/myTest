@@ -1,4 +1,4 @@
-package cn.com.sinosoft.customviewtest.fragment;
+package cn.com.sinosoft.customviewtest.lazy.fragment;
 
 import android.os.Bundle;
 
@@ -25,9 +25,12 @@ public class CFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CFragment() {
-        // Required empty public constructor
+    // Required empty public constructor
+    public static CFragment newInstance() {
+        CFragment fragment = new CFragment();
+        return fragment;
     }
+
 
     /**
      * Use this factory method to create a new instance of

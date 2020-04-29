@@ -1,4 +1,4 @@
-package cn.com.sinosoft.customviewtest.fragment;
+package cn.com.sinosoft.customviewtest.lazy.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,9 +39,11 @@ public abstract class LazyFragment extends Fragment {
 
     }
 
-    public View getResid(){
+    public View getView(){
         return view;
     };
+
+
     public abstract int getLayoutResId();
     public abstract void initView();
 

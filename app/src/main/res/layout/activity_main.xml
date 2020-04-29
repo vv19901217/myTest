@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".customview.MainActivity">
 
-    <cn.com.sinosoft.customviewtest.MyViewGroup
+    <cn.com.sinosoft.customviewtest.customview.MyViewGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
@@ -84,7 +84,7 @@
             android:text="妙蛙种子"
             android:textColor="#000" />
 
-        <cn.com.sinosoft.customviewtest.MyViewGroup
+        <cn.com.sinosoft.customviewtest.customview.MyViewGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
@@ -142,7 +142,7 @@
                 android:padding="5dp"
                 android:text="很长很长一段废话"
                 android:textColor="#000" />
-        </cn.com.sinosoft.customviewtest.MyViewGroup>
-    </cn.com.sinosoft.customviewtest.MyViewGroup>
+        </cn.com.sinosoft.customviewtest.customview.MyViewGroup>
+    </cn.com.sinosoft.customviewtest.customview.MyViewGroup>
 
 </LinearLayout>

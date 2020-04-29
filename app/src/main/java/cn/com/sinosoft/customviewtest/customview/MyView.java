@@ -1,4 +1,4 @@
-package cn.com.sinosoft.customviewtest;
+package cn.com.sinosoft.customviewtest.customview;
 
 import android.content.Context;
 import android.graphics.Canvas;

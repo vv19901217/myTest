@@ -1,4 +1,4 @@
-package cn.com.sinosoft.customviewtest.fragment;
+package cn.com.sinosoft.customviewtest.lazy.fragment;
 
 import android.os.Bundle;
 
@@ -15,10 +15,11 @@ import cn.com.sinosoft.customviewtest.R;
  */
 public class DFragment extends Fragment {
 
-    public DFragment() {
-        // Required empty public constructor
+    // Required empty public constructor
+    public static DFragment newInstance() {
+        DFragment fragment = new DFragment();
+        return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

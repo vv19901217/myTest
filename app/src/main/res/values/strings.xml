@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_string">姓名：%s</string>
+    <string name="age_string">年龄：%d</string>
+    <string name="sex_string">性别：%s</string>
+    <string name="lazy_string">懒加载练习</string>
+    <string name="customview_string">自定义view练习</string>
 </resources>

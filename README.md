@@ -19,4 +19,8 @@
 &emsp;&emsp;使用的http://mock-api.com<br>
 &emsp;&emsp;模拟post接口请求数据
 
+# 问题：
+E/RecyclerView: No adapter attached; skipping layout
+recyclerview初始化了，设置layoutmanager了，网络请求有数据了，获取的size 也不是0，setAdapter了，Addapter检查了，但还总是报这个异常，导致不加载数据
+纠结闹心
 
