@@ -63,12 +63,16 @@ public class AFragment extends Fragment {
         MyOkHttp.get().post(Constants.URL + Constants.method_a, params, new JsonResponseHandler() {
             @Override
             public void onSuccess(int statusCode, String response) {
-                Log.e("zzw_success",statusCode+response);
                 try {
+
                     dateBeanList.clear();
                     JSONObject jsonObject=new JSONObject(response);
+                    Log.e("zzw_success+333",dateBeanList.toString());
+
                     JSONArray jsonArray=jsonObject.optJSONArray("list");
                     for (int i = 0; i < jsonArray.length(); i++) {
+                        Log.e("zzw_success+jsonarray",jsonArray.length()+"");
+
                         JSONObject jsonObject1=jsonArray.optJSONObject(i);
                         DateBean bean=new DateBean();
                         bean.setName(jsonObject1.optString("name"));
