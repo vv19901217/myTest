@@ -35,7 +35,7 @@ import cn.sinosoft.myokhttp.response.JsonResponseHandler;
 public class CFragment extends Fragment {
     RecyclerView recyclerView;
     DataBindAdapter adapter;
-    List<DateBean> dateBeanList=new ArrayList<>();
+    List<DateBean> dateBeanList = new ArrayList<>();
 
     // Required empty public constructor
     public static CFragment newInstance() {
@@ -48,7 +48,7 @@ public class CFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_c, container, false);
+        View view = inflater.inflate(R.layout.fragment_c, container, false);
         initview(view);
         return view;
     }
@@ -64,15 +64,11 @@ public class CFragment extends Fragment {
                 try {
 
                     dateBeanList.clear();
-                    JSONObject jsonObject=new JSONObject(response);
-                    Log.e("zzw_success+333",dateBeanList.toString());
-
-                    JSONArray jsonArray=jsonObject.optJSONArray("list");
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.optJSONArray("list");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        Log.e("zzw_success+jsonarray",jsonArray.length()+"");
-
-                        JSONObject jsonObject1=jsonArray.optJSONObject(i);
-                        DateBean bean=new DateBean();
+                        JSONObject jsonObject1 = jsonArray.optJSONObject(i);
+                        DateBean bean = new DateBean();
                         bean.setName(jsonObject1.optString("name"));
                         bean.setAge(jsonObject1.optInt("age"));
                         bean.setSex(jsonObject1.optString("sex"));
@@ -83,13 +79,15 @@ public class CFragment extends Fragment {
                     adapter.refresh(dateBeanList);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("zzw_exception", e.toString());
+
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, String error_msg) {
-                Log.e("zzw_error",statusCode+error_msg);
+                Log.e("zzw_error", statusCode + error_msg);
 
             }
         });
@@ -98,19 +96,19 @@ public class CFragment extends Fragment {
 
     private void initview(View view) {
 
-        adapter=new DataBindAdapter(dateBeanList,getActivity());
+        adapter = new DataBindAdapter(dateBeanList, getActivity());
 
-        recyclerView=view.findViewById(R.id.datalistview);
+        recyclerView = view.findViewById(R.id.datalistview);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         recyclerView.setLayoutManager(
                 layoutManager
         );
-        if (adapter==null){
-            Log.e("zzw_error","nullnullnull");
+        if (adapter == null) {
+            Log.e("zzw_error", "nullnullnull");
 
-        }else {
+        } else {
             recyclerView.setAdapter(adapter);
 
         }

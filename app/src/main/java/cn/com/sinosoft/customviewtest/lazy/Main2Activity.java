@@ -72,6 +72,7 @@ public class Main2Activity extends AppCompatActivity implements ViewPager.OnPage
         fragmentAdapter=new FragmentAdapter(getSupportFragmentManager(),fragments);
         fragmentAdapter.setTabTitle(tabs);
         viewPager.setAdapter(fragmentAdapter);
+        viewPager.setOffscreenPageLimit(4);
         //将ViewPager与TabLayout绑定
         tableLayout.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(this);

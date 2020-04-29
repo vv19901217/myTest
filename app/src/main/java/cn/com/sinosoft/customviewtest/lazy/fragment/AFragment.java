@@ -31,7 +31,7 @@ import cn.sinosoft.myokhttp.response.JsonResponseHandler;
  * A simple {@link Fragment} subclass.
  *
  */
-public class AFragment extends Fragment {
+public class AFragment extends LazyFragment {
 
 
     RecyclerView recyclerView;
@@ -45,14 +45,57 @@ public class AFragment extends Fragment {
         }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_a, container, false);
-        initview(view);
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        View view=inflater.inflate(R.layout.fragment_a, container, false);
+//        initview(view);
+//
+//        return view;
+//    }
 
-        return view;
+    @Override
+    public int getLayoutResId() {
+        return R.layout.fragment_a;
+    }
+
+    @Override
+    public void initView() {
+
+        Log.e("zzw_error","1");
+
+        adapter=new DataBindAdapter(dateBeanList,getActivity());
+        Log.e("zzw_error","2");
+
+        recyclerView=getView().findViewById(R.id.datalistview);
+        Log.e("zzw_error","3");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        Log.e("zzw_error","4");
+
+        recyclerView.setLayoutManager(
+                layoutManager
+        );
+        Log.e("zzw_error","5");
+        if (adapter==null){
+            Log.e("zzw_error","nullnullnull");
+
+        }else {
+            recyclerView.setAdapter(adapter);
+            Log.e("zzw_error","6");
+
+        }
+    }
+
+    @Override
+    public void lazyLoadDate() {
+        getData();
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     /**
@@ -98,32 +141,5 @@ public class AFragment extends Fragment {
 
     }
 
-    private void initview(View view) {
-        Log.e("zzw_error","1");
 
-        adapter=new DataBindAdapter(dateBeanList,getActivity());
-        Log.e("zzw_error","2");
-
-        recyclerView=view.findViewById(R.id.datalistview);
-        Log.e("zzw_error","3");
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        Log.e("zzw_error","4");
-
-        recyclerView.setLayoutManager(
-                layoutManager
-        );
-        Log.e("zzw_error","5");
-        if (adapter==null){
-            Log.e("zzw_error","nullnullnull");
-
-        }else {
-            recyclerView.setAdapter(adapter);
-            Log.e("zzw_error","6");
-
-        }
-
-        getData();
-
-    }
 }
