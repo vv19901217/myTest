@@ -23,4 +23,6 @@
 E/RecyclerView: No adapter attached; skipping layout
 recyclerview初始化了，设置layoutmanager了，网络请求有数据了，获取的size 也不是0，setAdapter了，Addapter检查了，但还总是报这个异常，导致不加载数据
 纠结闹心
+debug：adapter是null·····log发现在json解析时有问题！
+解决：接口模拟的json写了个中文逗号·····尴尬极了····
 
