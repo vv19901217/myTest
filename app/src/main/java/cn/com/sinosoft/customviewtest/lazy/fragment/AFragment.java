@@ -63,33 +63,31 @@ public class AFragment extends LazyFragment {
     @Override
     public void initView() {
 
-        Log.e("zzw_error","1");
-
         adapter=new DataBindAdapter(dateBeanList,getActivity());
-        Log.e("zzw_error","2");
 
         recyclerView=getView().findViewById(R.id.datalistview);
-        Log.e("zzw_error","3");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        Log.e("zzw_error","4");
 
         recyclerView.setLayoutManager(
                 layoutManager
         );
-        Log.e("zzw_error","5");
         if (adapter==null){
             Log.e("zzw_error","nullnullnull");
 
         }else {
             recyclerView.setAdapter(adapter);
-            Log.e("zzw_error","6");
 
         }
     }
 
     @Override
     public void lazyLoadDate() {
+        Log.e("zzw-loading","1");
+
+//        startanime();
+        Log.e("zzw-loading","2");
+
         getData();
     }
 
@@ -102,20 +100,19 @@ public class AFragment extends LazyFragment {
      * 网络请求
      */
     private void getData() {
+        Log.e("zzw-loading","3");
+
         Map<String, String> params = new HashMap<String, String>();
         MyOkHttp.get().post(Constants.URL + Constants.method_a, params, new JsonResponseHandler() {
             @Override
             public void onSuccess(int statusCode, String response) {
+
                 try {
 
                     dateBeanList.clear();
                     JSONObject jsonObject=new JSONObject(response);
-                    Log.e("zzw_success+333",dateBeanList.toString());
-
                     JSONArray jsonArray=jsonObject.optJSONArray("list");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        Log.e("zzw_success+jsonarray",jsonArray.length()+"");
-
                         JSONObject jsonObject1=jsonArray.optJSONObject(i);
                         DateBean bean=new DateBean();
                         bean.setName(jsonObject1.optString("name"));
@@ -131,10 +128,9 @@ public class AFragment extends LazyFragment {
                 }
 
             }
-
             @Override
             public void onFailure(int statusCode, String error_msg) {
-                Log.e("zzw_error",statusCode+error_msg);
+//                stopanime();
 
             }
         });

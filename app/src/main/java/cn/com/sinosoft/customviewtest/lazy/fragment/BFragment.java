@@ -32,7 +32,7 @@ import cn.sinosoft.myokhttp.response.JsonResponseHandler;
  * Use the {@link BFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BFragment extends Fragment {
+public class BFragment extends LazyFragment {
 
     RecyclerView recyclerView;
     DataBindAdapter adapter;
@@ -50,14 +50,41 @@ public class BFragment extends Fragment {
 
     }
 
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        View view=inflater.inflate(R.layout.fragment_b, container, false);
+//        initview(view);
+//        return view;
+//    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_b, container, false);
-        initview(view);
-        return view;
+    public int getLayoutResId() {
+        return R.layout.fragment_b;
     }
+
+    @Override
+    public void initView() {
+        adapter=new DataBindAdapter(dateBeanList,getActivity());
+
+        recyclerView=view.findViewById(R.id.datalistview);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+
+        recyclerView.setLayoutManager(
+                layoutManager
+        );
+        if (adapter==null){
+            Log.e("zzw_error","nullnullnull");
+
+        }else {
+            recyclerView.setAdapter(adapter);
+
+        }
+
+    }
+
     /**
      * 网络请求
      */
@@ -123,13 +150,15 @@ public class BFragment extends Fragment {
         getData();
 
     }
+
+
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser){
+    public void lazyLoadDate() {
+        getData();
+    }
 
-        }else {
+    @Override
+    protected void initData() {
 
-        }
     }
 }

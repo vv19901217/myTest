@@ -1,14 +1,22 @@
 package cn.com.sinosoft.customviewtest.lazy.fragment;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import cn.com.sinosoft.customviewtest.R;
+import cn.com.sinosoft.customviewtest.customview.AppProgressDialog;
 
 /**
  * 懒加载 基类
@@ -34,16 +42,29 @@ public abstract class LazyFragment extends Fragment {
      */
     protected boolean isDataInitiated = false;
 
+    ImageView loadingImg;
+    AnimationDrawable animationDrawable;
+    private AppProgressDialog progressDialog;
+
     View view;
+    FrameLayout vp;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(getLayoutResId(), container, false);
+        initData();
         initView();
-        isViewInitiated = true;
+        vp = view.findViewById(R.id.rootview);
         return view;
 
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isViewInitiated = true;
+        load();
     }
 
     /**
@@ -58,13 +79,12 @@ public abstract class LazyFragment extends Fragment {
     ;
 
     /**
-     * 返回当前页面可见状态，不可见就直接销毁页面的话，这个方法感觉有点多余？？
-     * 默认false
+     * 返回布局
      *
      * @return
      */
-    public boolean isVisibleToUser() {
-        return isVisibleToUser;
+    public View getRootView() {
+        return view;
     }
 
 
@@ -86,8 +106,7 @@ public abstract class LazyFragment extends Fragment {
 
             if (isVisibleToUser) {
                 //可见，加载数据
-                lazyLoadDate();
-
+                load();
 
             } else {
                 //不可见
@@ -100,7 +119,56 @@ public abstract class LazyFragment extends Fragment {
     /**
      * 懒加载请求的数据
      */
-    public abstract void lazyLoadDate() ;
+    public abstract void lazyLoadDate();
+
+    public void load() {
+        if (isVisibleToUser && isViewInitiated && (!isDataInitiated)) {
+            showProgressDialog();
+            lazyLoadDate();
+            dismissProgressDialog();
+            isDataInitiated = true;
+        }
+//        if (!isDataInitiated) {
+//            lazyLoadDate();
+//            isDataInitiated=true;
+//        }
+    }
+
+    ImageView imageView;
+
+    public void startanime() {
+
+        Log.e("zzw_loading", "go");
+        //创建动画
+        imageView = new ImageView(getActivity());
+        imageView.setBackgroundResource(R.drawable.progressanime );
+//        imageView.setImageResource(R.drawable.progressanime);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        layoutParams.gravity = Gravity.CENTER;
+        imageView.setLayoutParams(layoutParams);
+        Log.e("zzw_loading", vp == null ? "vp==null" : "vp!=null");
+
+        vp.addView(imageView);
+        animationDrawable= (AnimationDrawable) imageView.getBackground();
+//        animationDrawable = (AnimationDrawable) imageView.getDrawable();
+        animationDrawable.start();
+        Log.e("zzw_loading", "animationDrawable.start!");
+
+    }
+
+
+    public void stopanime() {
+        //销毁动画
+        animationDrawable.stop();
+        animationDrawable = null;
+        if (imageView != null) {
+            vp.removeView(imageView);
+        }
+    }
+
+    ;
 
     /**
      * 初始化数据（跳转携带，或者缓存中）
@@ -111,7 +179,42 @@ public abstract class LazyFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (imageView != null) {
+            vp.removeView(imageView);
+            vp = null;
+        }
+        if (animationDrawable != null) {
+            animationDrawable = null;
+        }
+
+        if (progressDialog != null) {
+            progressDialog.dismissDialog();
+            progressDialog = null;
+        }
         isViewInitiated = false;
         isVisibleToUser = false;
+        isDataInitiated = false;
+        this.view = null;
     }
+
+
+    /**
+     * 显示进度框
+     */
+    public synchronized void showProgressDialog() {
+        if (progressDialog == null) {
+            progressDialog = new AppProgressDialog();
+        }
+        progressDialog.show(getActivity());
+    }
+
+    /**
+     * 隐藏进度框
+     */
+    public void dismissProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismissDialog();
+        }
+    }
+
 }
