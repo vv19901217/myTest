@@ -27,7 +27,7 @@ debug：adapter是null·····log发现在json解析时有问题！
 解决：接口模拟的json写了个中文逗号·····尴尬极了····
 
 # 插件化
-&emsp;&emsp;android 插件化
+&emsp;&emsp;android 插件化····**还没开始写**
 
 ## 一些说明
 &emsp;&emsp;关于插件化的理解，区别于组件化，模块化<br>
