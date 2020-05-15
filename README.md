@@ -8,7 +8,7 @@
 
 ## 自定义view
 &emsp;&emsp;没写
-## 懒加载
+## 懒加载（写的有点问题）
 &emsp;&emsp;主界面还是用tablayout+viewpager来实现常用的导航栏+布局
 ## myokhttp
 &emsp;&emsp;以前抄的谁的封装？真的忘记了·····<br>
@@ -26,7 +26,7 @@ recyclerview初始化了，设置layoutmanager了，网络请求有数据了，�
 debug：adapter是null·····log发现在json解析时有问题！
 解决：接口模拟的json写了个中文逗号·····尴尬极了····
 
-# 插件化
+# 插件化（暂时懒得写·····）
 &emsp;&emsp;android 插件化····**还没开始写**
 
 ## 一些说明
